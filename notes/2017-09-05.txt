@@ -1,0 +1,52 @@
+Application Layer
+=================
+
+Typical applications use client-server architecture
+P2P is an exception
+
+Developers only need to develop their software, not code for network devices
+
+Servers always have static IP
+
+DHCP - Dynamic host configuration protocol
+
+Management of P2P peers is complex due to changing IP's and decentralized architecture
+Each peer generated workload by requesting files, and handles workload by serving files
+
+Processes are programs running on a host
+
+Sockets are located between app layer and transport layer
+
+To receive message, processes must listen on a port to allow multiple processes
+
+App-layer protocol defines a variety of things:
+    Types of messages exchanges - Request/response
+    Syntax of messages - Header format/message structure
+    Message semantics - Meaning of information
+    Rules - When and how to send and respond to message
+
+Some protocols are defined in RFCs but others are proprietary
+
+Data integrity:
+    Different applications have different needs regarding data integrity
+    There is a tradeoff between throughput (bandwidth), timing (ping), data integrity
+    Security is also a tradeoff (TLS)
+
+TCP and UDP will be discussed in depth later
+TCP is reliable and has congestion control
+UDP is faster but not as reliable
+
+UDP is datagram oriented
+TCP is byte-stream oriented
+
+UDP
+    No handshake
+    Sender attached IP destination address and port number
+    Receiver extracts the numbers from the received packet
+    UDP may transmit data out of order or lose data
+    The client also attached its address for responses
+
+TCP
+    Connection in TCP involves a 3-step handshake
+    The sockets are specific to each client
+

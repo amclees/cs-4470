@@ -1,0 +1,85 @@
+HTTP and Web Applications Continued
+
+HTTP headers are in ASCII
+Each line ends in carriage return character then line feed character
+End of the header is an empty line
+Each line has different key-value pairs
+
+The request line specifies the method, the resource being requested, and the HTTP protocol version
+The following lines are the header lines
+  Host
+  User-Agent
+  Accept
+  Accept-Language
+  Accept-Encoding
+  Accept-Charset
+  Keep-Alive - 115 means the TCP timeout is 115 seconds
+  Connection - Can be either keep-alive or close to determine whether connection is kept after a single resource
+There are many more other header lines. Many of the lines are optional
+
+GET vs. POST is apparently a popular interview question
+
+The HTTP response consists of the status line, header lines, and the data requested.
+
+The ETag in an HTTP respond is a GUID for a particular object
+400 means Bad Request
+
+Caching is implemented at various levels by browsers, ISPs, and content providers.
+The delay can be greatly reduced with a local cache.
+Conditional GET only gets the object if the latest version is not in the cache.
+Uses the If-modified-since header line
+
+SMTP is a principal protocol for mail servers to send email
+It runs on top of TCP
+It runs ASCII text commands
+SMTP responses have a status code and phrase
+SMTP originally only used ASCII, but there are now a variety of methods of using UTF-8 in emails.
+
+POP3 is Post Office Protocol version 3
+IMAP is the Internet Mail Access Protocol
+
+SMTP puts all objects into one message. It uses double carriage line to terminate the message.
+
+
+DNS
+
+DNS means the domain name system
+It is used to map between human-friendly names and IP addresses
+It is also used for aliasing various hosts
+It can also be used for load distribution -- many servers may correspond to the same domain name
+
+Centralizing DNS would be be difficult to maintain and prone to failure.
+There is also a huge volume of DNS traffic
+
+Each ISP has a local DNS server
+The local DNS server makes a request to a root DNS server
+The local DNS server is told to make a request to the TLD DNS server
+The local server can make a request to the authoritative DNS server that it knows from the TLD DNS server which may be hosted by the owner of the name (e.g. dns.example.com)
+
+DNS is cached, but after some TTL the cache is discarded.
+
+DNS is a distributed database storing RR (Resource Records)
+Format: (name, value, type, ttl)
+Types
+  type=A
+  type=NS
+  type=CNAME
+  type=MX
+For exam remember type A and type NS
+
+The DNS registrar puts records into the TLD server
+
+
+P2P Applications
+
+A pure P2P architecture has no server
+
+u_s - Upload rate of server
+u_i - Upload rate of client
+d_i - Download rate of client
+N - Number of peers
+
+Time complexity involves algebra that is a bit tough to put in a text file; see slides
+Essentially P2P can reduce necessary server bandwidth for distribution
+
+
