@@ -1,0 +1,22 @@
+Homework 2
+
+1. Why does HTTP run on top of TCP rather than on UDP? And why can multimedia stream protocol run on top of UDP in some scenarios? 
+
+HTTP requires reliable transmission since it is used to send text. TCP is reliable but UDP is not reliable enough to send text.
+
+Multimedia stream protocols can run on UDP because slight changes to a picture or video are not noticable to humans, and UDP is faster than TCP.
+
+
+2. Suppose within your Web browser you click on a link to obtain a Web page, and the Web page is consisting of one HTML text with eight referenced objects. Let RTT0 denote the RTT between the local host and the server containing the object, the link transmission bandwidth is R, and the HTML text file size is L0 and the reference objects have a size of L1, L2, L3, …, L8, respectively. How much time elapses from when the client clicks on the link until the client receives the object in the following scenarios? 
+
+a. Non-persistent HTTP with no parallel TCP connections? 
+(18 * RRT0) + ((L0 + ... + L8) / R) 
+
+b. Non-persistent HTTP with the browser configured for 9 parallel connections? 
+(4 * RRT0) + ((L0 + max(L1, ..., L8) / R) 
+
+c. Persistent HTTP with no parallel TCP connection? 
+(10 * RRT0) + ((L0 + ... + L8) / R)
+
+d. Persistent HTTP with the browser configured for 9 parallel connections? 
+(3 * RRT0) + ((L0 + max(L1, ..., L8)) / R)
