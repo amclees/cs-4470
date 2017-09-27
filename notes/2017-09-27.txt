@@ -1,0 +1,71 @@
+BitTorrent
+
+Trackers keep track of the peers in the torrent
+Multiple trackers may be in one torrent
+
+Churn is the switching out of peers over time
+
+The rarest chunks are requested first to keep the torrent going despite churn
+Data is send to the peers who are sending the most data to you -> tit-for-tat
+
+Tit-for-tat and rarest-first algorithms will be on midterm
+
+CDNs deliver content globally
+Cloud servers can create different versions of each video for different devices
+
+
+Transport Layer
+
+In exam question on packet name for layers
+Transport layer packets are called segments
+IP - datagram
+Link layer - frame
+
+---------
+App
+---------
+Transport
+---------
+Network
+---------
+
+Switching between the layers is multiplexing and demultiplexing
+
+Network is for communication between hosts
+Transport layer is for communication between processes
+
+The transport is in the end systems, the network is like a postal service
+
+Demultiplexing is going up in the layers
+
+Servers have differents sockets for each client
+UDP uses destination IP and port to identify clients (the data must specify who is connecting)
+TCP multiplexes clients to different sockets
+
+UDP is more barebones
+
+IP is in the network layer -> it does not guarantee order and has packet loss
+
+UDP can have app-specific error handling
+
+UDP checksum is used to detect errors
+It is the one's complement of the sum with wrapping around of the other fields
+
+
+How is reliable data transfer of TCP achieved
+
+It sits on top of an unreliable data transfer channel
+
+A finite state machine is used for these protocols, they are not stateless
+
+Reliable data transfer theoretically has no bit errors and no packet loss
+
+The unreliable protocol may flip bits
+This must be fixed
+
+This RDT from the slides will have its own problem on the midterm
+
+ACK - acknowledge
+RST - reset
+NAK - negative acknowledge
+
