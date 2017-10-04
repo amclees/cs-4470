@@ -1,0 +1,83 @@
+Reliable Data Transfer
+
+Two problems to solve
+  Packet corruption
+  Packet loss
+
+Can use a sequence number to detect duplicate packets
+This can be done in a finite state machine (different for sender/receiver)
+
+Send a packet then wait for ACK or NAK
+If there is a NAK retransmit, and also if there is an incorrect sequence number, retransmit
+
+This will be on midterm
+
+Packets may be received out of order
+
+In the diagrams the top is what the user of the API is doing and the bottom is what the API does with the unreliable channel
+
+
+Next version
+  Channel has errors and loss
+
+This one (rdt 3.0) in slides handles packet loss including data and ACKs
+
+This uses a timer to determine a reasonable time to wait for the ACK
+
+rdt 3.0 has very bad performance in terms of propogation (in-wire) delay
+
+Because of this, there are other types of protocols
+
+
+Pipelined Protocols
+
+Two types
+  go back N
+    Can have up to N unacknowledged packets
+    Receiver sends a cumulative ACK
+      Discards incorrect seq. # and retransmits everything
+    There is a timer for the oldest packet not acknowledged yet, then all unacked are retransmitted
+  selective repeat
+    Up to N unacknowledged packets
+    Receivers sends individual ACK for each packet
+    Sender keeps timer for each unacknowledged packet
+
+Receiver Actions
+  Discard
+    Skip deMUXing of the packet
+  Deliver
+    Send it to app layer with deMUXing
+
+Selective Repeat
+  TImer is used to protect from lost packets
+  Only a single packet is sent on timeout
+  Needs a buffer for storage of timers and packets
+
+  Needs a buffer for storage of timers and packets
+
+Windows size <= seq number max / 2
+
+TCP is full duplex -> communication is two ways
+It is flow controlled
+Connection oriented
+One sender, one recceiver
+Reliable in-order byte stream
+Pipelined
+
+Transport layer is between processes
+There is a maximum segment size in transport layer
+
+ACK number is based on the received seq. #
+
+TCP timeout should be longer than RTT
+too short causes unnecessary retransmissions
+too long causes slow reaction to segment loss
+
+But since RTT varies there is no fixed TCP timeout
+It is weighted like the time from OS
+
+Est = (1 - alpha) * Est + alpha * Sample
+
+Typical alpha for TCP is 0.125
+DevRTT
+TimeoutInterval = EstRTT + 4 * DevRTT
