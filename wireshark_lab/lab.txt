@@ -1,0 +1,56 @@
+1.
+$ nslookup www.kyoto-aquarium.com
+Non-authoritative answer:
+Server:  google-public-dns-a.google.com
+Address:  2001:4860:4860::8888
+
+Name:    www.kyoto-aquarium.com.cdngc.net
+Addresses:  115.127.226.172
+          115.127.226.16
+Aliases:  www.kyoto-aquarium.com
+
+115.127.226.172 and 115.127.226.16 are the server's IP addresses.
+
+2.
+$ nslookup -type=NS www.ox.ac.uk
+Server:  google-public-dns-a.google.com
+Address:  2001:4860:4860::8888
+
+ox.ac.uk
+        primary name server = nighthawk.dns.ox.ac.uk
+        responsible mail addr = hostmaster.ox.ac.uk
+        serial  = 2017102072
+        refresh = 3600 (1 hour)
+        retry   = 1800 (30 mins)
+        expire  = 1209600 (14 days)
+        default TTL = 900 (15 mins)
+
+nighthawk.dns.ox.ac.uk is the authoritative DNS server for Oxford University.
+
+3.
+$ nslookup -type=MX mail.yahoo.com nighthawk.dns.ox.ac.uk
+*** Request to UnKnown timed-out
+DNS request timed out.
+    timeout was 2 seconds.
+Server:  UnKnown
+Address:  163.1.2.189
+
+DNS request timed out.
+    timeout was 2 seconds.
+DNS request timed out.
+    timeout was 2 seconds.
+
+Its IP address is 163.1.2.189. It did not respond to the query.
+
+
+Note: My ISP allows only IPv6, and my host's DNS caches would not clear so I used the
+provided capture files in the assignment.
+
+4.
+UDP
+
+5.
+Both are 53.
+
+6.
+The query is sent to 128.238.29.23.
