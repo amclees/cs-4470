@@ -43,7 +43,7 @@ DNS request timed out.
 Its IP address is 163.1.2.189. It did not respond to the query.
 
 
-Note: My ISP allows only IPv6, and my host's DNS caches would not clear so I used the
+Note: My host's DNS caches would not clear so I used the
 provided capture files in the assignment.
 
 4.
@@ -53,4 +53,56 @@ UDP
 Both are 53.
 
 6.
-The query is sent to 128.238.29.23.
+The query is sent to 128.238.29.23, which is the local DNS server for the creator of the capture file.
+
+7.
+The query is type A. There are no answers in the query.
+
+8.
+There are two answers. Each one is type A and has an IP address for www.ietf.org. 
+The IPs are 132.151.6.75 and 65.246.255.51.
+
+9.
+The subsequent TCP SYN packet is sent to IP 132.151.6.75 which is one of the answers in the DNS response.
+
+10.
+No, it only makes a DNS lookup before the first HTML page.
+
+11.
+Both are 53.
+
+12.
+The IP it is sent to is 128.238.29.22 which is different from the DNS server in the previous capture file. It is possible the creator of the files had two DNS servers set (128.238.29.22 and 128.238.29.23).
+
+13.
+There are no answers in the query. The query is for type A records.
+
+14.
+There is 1 answer containing the address 18.7.22.83 for www.mit.edu.
+
+15.
+Screenshots uploaded to CSNS.
+
+16.
+It is sent to 128.238.29.22 which is the local DNS server.
+
+17.
+It is a NS query and contains no answers.
+
+18.
+It does not provide the IP addresses. The nameservers are bitsy.mit.edu, strawb.mit.edu, and w20ns.mit.edu.
+
+19.
+Screenshots uploaded to CSNS.
+
+20.
+The IP 18.72.0.3 of the DNS query is sent to is not the local DNS server; it corresponds to use2.akam.net.
+
+21.
+The query contains no answers and is type A.
+
+22.
+The response contains one answer with the IP 218.36.94.200 of www.aiit.or.kr.
+
+23.
+Screenshots uploaded to CSNS.
