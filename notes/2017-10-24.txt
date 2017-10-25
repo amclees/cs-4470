@@ -1,0 +1,48 @@
+More on Congestion Control
+
+Congestion control happens on the server side.
+cwnd is the congestion window, which is a limit on non-acked data
+The issue in congestion control is developing an algorithm for determining cwnd
+
+One question on final will be about the value of cwnd and such
+
+ssthresh is slow start threshold, initially is an estimate
+Be able to identify slow start vs. congestion avoidance
+
+Be sure to floor the values on the exam
+
+round  |  segment #
+1           1
+2          2-3
+3          4-7
+4          8-15
+5          16-31
+6          32-63
+7          64-96
+
+The 70th segment is sent in round 7
+Will probably be on exam
+
+Congestion avoidance has additive increase with multiplicative decrease.
+
+
+TCP fairness
+
+Within K TCP sessions with the same link with bandwidth R, all should on average have R/K
+
+UDP is not fair
+UDP is as such used for media applications
+
+There is also E2E congestion control called Explicit Congestion Notification (ECN)
+ToS is type of service in the IP header
+They are set to 11 by a congested router
+
+
+Network Layer
+
+Forwarding - Takes in a packet then outputs it
+Routing - Determines the route a packet will take
+
+There are two planes of the network layer
+  Data plane
+  Control plane
