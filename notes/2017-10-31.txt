@@ -1,0 +1,88 @@
+Dijkstra's algorithm is also known as link state algorithm
+
+Distance vector algorithm
+
+Uses the Bellman-Ford equation to calculate distance
+The router receives data from neighbors rather than knowing the entire network topology
+
+The distance to somewhere is the sum of
+  the distance to a neighbor from here
+  the distance from a neighbor to there
+
+At certain times each node sends its distance vector estimates to neighbors
+When a node receives a new estimate it updates its own estimate
+
+"Good news" is when link costs decrease
+Good news actually travels fast
+
+"Bad news" travels very very slowly
+
+Routing needs to be scalable for the whole internet
+
+Routers are group into autonomous systems (AS) also called domains
+All routers in an AS use the same protocol
+Gateway routers handle communication between AS's
+
+Inter-AS routing must determine how to sent packets through other AS's
+
+OSPF - Open Shortest Path First protocol
+Intra-AS
+Publicly available
+Uses link state algorithm
+Each node has a complete topology map
+
+The network can be split into areas, which each have their own link state algorithm
+The routers between areas are called backbone routers
+There is one area border router but backbone routers may be individual, outside any area
+
+BGP - Border Gateway Protocol
+Inter-AS
+
+2 types
+  eBGP - external
+  iBGP - internal
+
+Makes sure all routers on the internet learn of new subnets
+
+
+Subnets
+
+192 . 168 . 1 . 100
+-------------   ---
+      |          |
+  subnet part   host part
+
+LAN is a subnet
+
+A subnet consists of computers that can reach each other without an intervening router
+
+Back to BGP
+
+There is a BGP session
+
+Two BGP routers called peers exchange BGP messages over TCP
+They advertise paths to destination network prefixes
+The AS "promises" to forward datagrams to a particular path
+
+The AS advertises a prefix and attributes
+These two components make up the "route"
+
+Two main attributes
+  AS-PATH - list of AS's through which prefix advertisement has passes
+  NEXT-HOP - IP address of the first router in the AS-PATH
+
+AS policy determines whether or not to advertise a path to other AS's
+
+IP address of leftmost interface of 2a for next hop on slides 5-49
+
+Each router has different IP's for different interfaces
+
+BGP messages
+  OPEN
+  UPDATE
+  KEEPALIVE
+  NOTIFICATION
+
+The router sets forwarding table entries to distant paths based on the iBGP-designated gateway router and the gateway router uses the eBGP next hop
+All of this is based on the policy
+
