@@ -1,0 +1,66 @@
+Things to know
+  TCP - Transport Control Protocol
+  UDP - User Datagram Protocol
+  IP - Internet Protocol
+  CIDR - Classless Inter-Domain Routing
+  ICANN - Internet Corporation for Assigned Names and Numbers
+  DHCP - Dynamic Host Configuration Protocol
+  NAT - Network Address Translation
+  QoS - Quality of Service (in IPv6)
+  ICMP - Internet Control Message Protocol
+  SDN - Software Defined Networking
+  CA - Control Agents
+  LS - Link State
+  DV - Distance Vector
+  AS - Autonomous Systems
+  IGP - Interior Gateway Protocols
+  RIP - Routing Information Protocol
+  OSPF - Open Shortest Path First
+  IS-IS - Intermediate System to Intermediate System
+  IGRP - Interior Gateway Routing Protocol
+  BGP - Border Gateway Protocol
+  eBGP - Exterior BGP
+  iBGP - Interior BGP
+  TTL - Time To Live
+  SNMP - Simple Network Management Protocol
+  MIB - Management Information Base
+  LAN - Local Area Network
+  802.11 - IEEE 802.11 (WiFi)
+  MAC - Media Access Control (address)
+  NIC - Network Interface Card
+  EDC - Error Detection and Correction
+  CRC - Cyclic Redundancy Check
+  TDMA - Time Division Multiple Access
+  FDMA - Frequency Division Multiple Access
+  Slotted ALOHA
+  Pure ALOHA
+  CSMA - Carrier Sense Multiple Access
+  CSMA/CD - CSMA with collision detection
+  Ethernet
+  Polling protocols
+  Token passing protocols
+  DOCSIS - data over cable service interface spec 
+  ARP - Address Resolution Protocol
+  CSMA/CD with binary backoff
+  VLAN - Virtual VLAN
+  MPLS - Multiprotocol label switching
+  
+
+Layer Packet Names
+  Application - Message
+  Transport - Segment
+  Network - Datagram
+  Link - Frame
+  Physical - Doesn't send packets, sends bits
+
+Long Problems
+
+Question 1 (TCP Reno/ect)
+
+Question 2 (Longest prefix matching in router)
+
+Question 3 (Subnet IP address assigning)
+
+Question 4 (Dijkstra’s algorithm, need to know how to get shortest path tree after making the table, need to know how to make forwarding table from shortest path tree)
+
+Question 5 (Distance vector algorithm, fill in 3 tables exactly like homework, need to also fill a routing table with next hop)
