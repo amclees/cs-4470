@@ -1,0 +1,94 @@
+Internet Protocol (IP)
+
+IPv6 has simplified packet structure compared to IPv4
+
+IPv4 datagrams may be fragmented
+They are only reassembled at the final destination host, not in routers beforehand
+
+Different router or host interfaces have different IP addresses
+
+The subnet part of the IP address has significance
+  If 2 routers have the same subnet part of the IP address they do not need another router to communicate with other members of the same subnet
+
+For packet transmission there are two important protocols: IP and ARP
+  ARP maps an IP address to a link layer (ethernet or otherwise) address
+  IP is used for sending data across multiple routers
+
+Subnet masks are masks for the subnet
+
+Routers also form subnets
+
+Classless Interdomain Routing (CIDR)
+  Format of addressing
+
+255.255.255.255 is the address to send to all hosts on the same subnet
+
+Internet Corporation for Assigned Names and Numbers (ICANN)
+  Allocates IP addresses, DNS
+
+223.1.17.0/24
+  223.1.17.0000 0000/25 = 223.1.17.0/25
+  223.1.17.1000 0000/26 = 223.1.17.128/26
+  223.1.17.1100 0000/26 = 223.1.17.192/26
+
+  It is quicker to do without binary, just add the last step's block size
+
+Two main ways to get the IP address
+  Can be hardcoded
+  Can use Dynamic Host Configuration Protocol (DHCP)
+
+DHCP
+  A DHCP server responds to subnet client DHCP requests
+  Uses the broadcast IP address (255.255.255.255) to broadcast to any potential server
+  yiaddr (your IP address) is the address offered by the DHCP server
+
+Network Address Translation
+  The local network has just 1 IP to the outside world
+  It has a table from WAN address to LAN address called the NAT translation table
+  65536 ports, so it can be an issue
+
+IPv6
+  IPv4 is filling up
+  Has header changes to speed up forwarding and help with QoS
+
+  The transition from IPv4 to IPv6 is difficult
+    Not all routers can suddenly be updated because interrupting traffic is not an option
+  Tunneling
+    IPv6 can be the payload inside an IPv4 packet
+
+Next semester we will go over a new protocol
+  Neighbor Adjacent Protocol
+    It is used to determine the protocols used by neighbors
+    This is needed for determining when to wrap the IPv6 packet in an IPv4 packet
+
+Now we will describe generalized forwarding (the key to SDN)
+
+The central routing controller sends a flow table to each router
+  3 columns
+    Head
+      Source/destination
+    Count
+      Priority, count of packets that match
+    Action
+      What to do
+  One entry in the table is called a flow
+  Highest priority flow is used
+
+  OpenFlow entries
+    Rule
+    Action
+    Stats
+
+  Can be used as a firewall
+
+  Can be used on switches and routers because rules may be based on MAC addresses
+
+  MAC address (media access control)
+
+  Applies to NAT also (rewrite address and port)
+
+OpenFlow
+  The OpenFlow controller distributes flow tables
+
+Schedule for presentation on CSNS, last class starts 6:30pm on November 28
+

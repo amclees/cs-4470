@@ -1,0 +1,128 @@
+More Control Plane with WAN routing
+
+Project 1 Demos - Could do it next week or last class
+
+Hot potato routing
+  Routers send the packet away right away
+  Ignore the inter-domain cost
+
+BGP Policy
+  ISP's often will not route traffic that isn't between customer networks
+  This can be handled through advertising only paths with proper endpoints if they pass through the AS
+  Policy is only used in inter-AS routing
+
+We now have finished the BGP Protocol
+
+
+SDN Control Plane
+
+Software Defined Networking (SDN)
+  A per-router control plane uses algorithms such as distance vector
+
+  SDN takes the control plane and puts it on centralized servers instead
+
+  CA is control agents (routers in this SDN system)
+
+  SDN has many benefits
+    Config
+    Easier to program for
+    Open standards for control plane
+    Can base forwarding of packets on any header value in transport, network, or link layer
+
+  Control and data plane is separated
+  Control is not a part of switches, so it is easier to manage
+
+  3 layers of an SDN controller
+    OpenFlow/SNMP for communication with controlled devices (Called Southbound APIs)
+    Network-wide state management - Distributed database
+    Interfaces for control applications - Routing, access control, and load balancing application use REST APIs (Called Northbound APIs)
+
+  OpenFlow protocol
+    Important southbound API
+    Can use TLS
+    See slides for details
+
+  Routing on the SDN typically uses Dijkstra's algorithm
+
+  Forwarding and flow tables are not the same thing
+
+ICMP
+  Internet Control Message Protocol
+
+  ICMP is a part of IP (It is carried inside the IP datagram)
+
+  Two important codes: TTL expired and destination port unreachable
+  Traceroute uses these, the way TTL is set made each router disard the datagram and send an ICMP message type 11, code 0 (Time exceeded)
+
+  ICMP message has the router's CName, IP, etc.
+
+  When the ICMP message hits the destination, it sends back a type 3 code 3 (port unreachable) because the destination port set in the original message is unlikely (like 38241 or something)
+
+SNMP
+  Simple network management protocol
+
+  A managed device is a device in a managed network
+  A managed device has managed objects (components), and their data is stored in a Management Information Base (MIB)
+
+  An agent is a process running in the device
+  Agents communicate with the managing entity on the managing server
+
+  There are two ways to convey data
+    Request/response mode, more common
+    Trap mode
+      The agent sends a trap message to the managing entity
+      If something happens this sort of message will be sent
+
+There are two main functions in the network layer
+  Routing
+  Forwarding
+
+Routing is in the control plane, forwarding is in the data plane
+
+Two bases for forwarding
+  IP Address
+  Flow
+
+IP Address is traditional whereas flow is used in SDN
+
+A generic router has 4 components
+  Routing processer
+  Switching fabric
+  Routing input ports
+  Routing output ports
+
+Everything outside the routing processor is in the forwarding data plane
+The forwarding data plane is implemented in hardware and works in nanoseconds
+
+An Input Port:
+  Line termination (physical bits from the link interface) --> Link layer protocol --> Forwarding --> Switch fabric
+
+Destination-based forwarding uses only to destination IP, generalized forwarding uses the whole packet
+
+IP addresses themselves work how you would expect
+
+Switching Fabrics
+  The forwarding functionality happens in hardware in the switching fabric
+
+  Three main switching fabric types
+  Not a focus for this class
+    Memory, bus, and crossbar (don't need to know details)
+  Each increases scale, crossbar is only needed for very serious routers
+
+  HOL (Head of the line) blocking: if a queued datagram is going through the fabric and can't go through because the earlier queued datagram goes first
+  The queuing of datagrams happens not in the fabric, but in the input and output ports
+
+  The scheduling discipline determines which to use from the queue
+
+  If a buffer is full then packets are discarded according to the discord policy
+  There is FIFO and priority scheduling
+
+  All scheduling is no-interrupt here
+
+  Round robin scheduling is round robin on interface, not on time
+  Each interface takes turn, if it is empty the turn is over otherwise the packet is sent and the turn is over
+
+  Weighted Fair Queuing (WFQ)
+    More general Round Robin
+    Each class gets a weighted amount of bandwidth in each cycle
+

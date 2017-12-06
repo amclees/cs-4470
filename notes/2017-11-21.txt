@@ -1,0 +1,127 @@
+Link Layer
+
+Hosts called nodes
+Paths called links (wireless or wired)
+
+Packet - frame
+
+Ethernet, 802.11, etc. are all treated as if they are directly connect
+
+Datagram from the network layer is encapsulated into a frame with a header and footer
+
+Reliable transfer is used more often for wireless links since they are high-error
+
+It is implemented in the network adapter (NIC)
+
+EDC (Error detection and correction bits)
+The EDC field is sent with a datagram to find errors
+
+CRC (Cyclic redundacy check)
+  Generator done by left shifting then xoring with CRC bits at the end
+
+Two kinds of links
+  Point to point
+    Point-to-point link between Ethernet switch and host
+  Broadcast
+    802.11
+    Ethernet
+
+Partitioning channels
+  TDMA - time division multiple access
+  Divides time into frames, each station getting fixed length slots
+
+Random acceess protocol
+  When there is a packet to send
+  There are collisions: multiple nodes may try to send at the same time
+  Various protocols to solve this
+    Slotted ALOHA
+      There are timed slots not reserved for any particular node
+      If these is a collision, it will be detected before the end of the slot
+      Frames are constant size
+
+      Since it is decentralized it works nicely
+      Clock synchronization is required
+
+      Some slots are idle or wasted due to many collisions
+
+      1/e collision probability
+
+    Pure ALOHA
+      Like slotted ALOHA except without slots
+      Pros
+        Simple
+      Cons
+        Everything else
+
+      1/2e probability of collision
+
+    Carrier Sense Multiple Access (CSMA)
+      If channel is idle - transmit entire frame
+      If channel is busy - defer transmission
+
+      Collisions can still occur due to transmission delay
+      CSMA by itself does not detect collisions
+      There is a CSMA with collision detection but it imposes some restrictions on which hardware may be used (difficult in wireless)
+
+    Ethernet CSMA/CD algorithm
+      Stops transmission and sends a jam signal on detection of a collision
+      After this the NIC enters a backoff mode
+      The backoff more chooses the next frame as being K frames away
+      K = [0, 1, 2, ..., 2^m - 1].sample
+      Don't need to remember the whole thing
+      Remember the name "backoff"
+
+      Efficiency goes to 1 as propagation delay decreases and transmission delay increases
+
+    Polling protocol
+      One node must be specified as master with a number of slave nodes
+      Grants nodes turns based on round robin
+
+    Token passing protocol
+      Pass a token between the nodes in a fixed order
+      Has a single point of failure, overhead from the token
+      Not popular now that ethernet is in wide use
+
+  The above are various Multiple Access Control (MAC) protocols
+
+Cable Access Network
+  CMTS - cable modem termination system, located at the end of the ISP's network, connects to consumer modems
+  Of FDM and TDM, either can be used
+
+  Mini-slot frame is an example of a downstream MAP frame (they are a part of the main frame used in various protocols like 802.16 mesh mode)
+
+LAN
+  48-bit MAC address is software-configurable
+  This is the physical address of a node
+
+  If you liken it to a SSN, the government is very lax
+
+ARP - Address Resolution Protocol
+  Determines MAC given IP
+  All IP nodes maintain an IP table
+  IP address, MAC address, TTL is the structure of a row
+
+  Somewhat similar to DNS but has some differences
+  ARP is local to a particular network
+  DNS is an internet-level protocol
+
+  Steps
+    Send an ARP query (broadcast like DHCP) with IP address
+    B responds with it's MAC address
+
+Routing algorithm finds the router IP to send a datagram
+
+DHCP is only for hosts getting their own IP
+
+Each router interface has a MAC address since each interface has its own NIC
+
+Ethernet
+  Main wired LAN
+  Different Topologies
+    Bus
+      Used a coaxial cable
+      Many hosts on single channel
+    Star (modern)
+      Switch between nodes
+      No shared channels
+
