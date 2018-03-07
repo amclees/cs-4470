@@ -44,7 +44,6 @@ Things to know
   CSMA/CD with binary backoff
   VLAN - Virtual VLAN
   MPLS - Multiprotocol label switching
-  
 
 Layer Packet Names
   Application - Message
